@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2C57C90B-A458-4220-BE7D-8488FCAC90AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6E05DACF-65CF-4614-979D-247937AF3955}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MountainHitchhiker.Services.Availability.Core", "src\MountainHitchhiker.Services.Availability.Core\MountainHitchhiker.Services.Availability.Core.csproj", "{9A62C953-41D5-4129-8248-C53ACE2BB212}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9A62C953-41D5-4129-8248-C53ACE2BB212} = {2C57C90B-A458-4220-BE7D-8488FCAC90AC}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A62C953-41D5-4129-8248-C53ACE2BB212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A62C953-41D5-4129-8248-C53ACE2BB212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A62C953-41D5-4129-8248-C53ACE2BB212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A62C953-41D5-4129-8248-C53ACE2BB212}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

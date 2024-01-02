@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Convey" Version="1.1.448" />
+        <PackageReference Include="Convey.WebApi" Version="1.1.448" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MountainHitchhiker.Services.Availability.Application\MountainHitchhiker.Services.Availability.Application.csproj" />
+      <ProjectReference Include="..\MountainHitchhiker.Services.Availability.Infrastructure\MountainHitchhiker.Services.Availability.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

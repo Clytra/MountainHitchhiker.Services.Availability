@@ -6,6 +6,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6E05DACF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MountainHitchhiker.Services.Availability.Core", "src\MountainHitchhiker.Services.Availability.Core\MountainHitchhiker.Services.Availability.Core.csproj", "{9A62C953-41D5-4129-8248-C53ACE2BB212}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MountainHitchhiker.Services.Availability.Application", "src\MountainHitchhiker.Services.Availability.Application\MountainHitchhiker.Services.Availability.Application.csproj", "{D652C8B7-7FC0-4A8B-841B-46F384423D17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MountainHitchhiker.Services.Availability.Infrastructure", "src\MountainHitchhiker.Services.Availability.Infrastructure\MountainHitchhiker.Services.Availability.Infrastructure.csproj", "{D0EC3371-423C-4265-A8AF-EEDDDF0B85E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MountainHitchhiker.Services.Availability.Api", "src\MountainHitchhiker.Services.Availability.Api\MountainHitchhiker.Services.Availability.Api.csproj", "{0C4C9562-3DF3-4676-A941-14DE37F3917B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,11 +19,26 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9A62C953-41D5-4129-8248-C53ACE2BB212} = {2C57C90B-A458-4220-BE7D-8488FCAC90AC}
+		{D652C8B7-7FC0-4A8B-841B-46F384423D17} = {2C57C90B-A458-4220-BE7D-8488FCAC90AC}
+		{D0EC3371-423C-4265-A8AF-EEDDDF0B85E7} = {2C57C90B-A458-4220-BE7D-8488FCAC90AC}
+		{0C4C9562-3DF3-4676-A941-14DE37F3917B} = {2C57C90B-A458-4220-BE7D-8488FCAC90AC}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9A62C953-41D5-4129-8248-C53ACE2BB212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9A62C953-41D5-4129-8248-C53ACE2BB212}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A62C953-41D5-4129-8248-C53ACE2BB212}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A62C953-41D5-4129-8248-C53ACE2BB212}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D652C8B7-7FC0-4A8B-841B-46F384423D17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D652C8B7-7FC0-4A8B-841B-46F384423D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D652C8B7-7FC0-4A8B-841B-46F384423D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D652C8B7-7FC0-4A8B-841B-46F384423D17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0EC3371-423C-4265-A8AF-EEDDDF0B85E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0EC3371-423C-4265-A8AF-EEDDDF0B85E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0EC3371-423C-4265-A8AF-EEDDDF0B85E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0EC3371-423C-4265-A8AF-EEDDDF0B85E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C4C9562-3DF3-4676-A941-14DE37F3917B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C4C9562-3DF3-4676-A941-14DE37F3917B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C4C9562-3DF3-4676-A941-14DE37F3917B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C4C9562-3DF3-4676-A941-14DE37F3917B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

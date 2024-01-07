@@ -15,4 +15,8 @@
       <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\MountainHitchhiker.Services.Availability.Core\MountainHitchhiker.Services.Availability.Core.csproj" />
+    </ItemGroup>
+
 </Project>

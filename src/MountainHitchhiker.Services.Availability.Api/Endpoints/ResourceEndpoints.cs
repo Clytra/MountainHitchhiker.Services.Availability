@@ -12,7 +12,9 @@ public static class ResourceEndpoints
             AddResource command) =>
         {
             await dispatcher.SendAsync(command);
-            return Results.Accepted();
+
+            var resourceLocation = $"/resources/{command.ResourceId}";
+            return Results.Created(resourceLocation, new { command.ResourceId });
         });
     }
 }

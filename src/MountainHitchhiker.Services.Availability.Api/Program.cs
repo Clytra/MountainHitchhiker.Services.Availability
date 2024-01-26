@@ -32,6 +32,6 @@ app.UseAuthorization();
 
 app.UseInfrastructure();
 
-app.MapResourceEndpoints();
+app.UseResourceEndpoints();
 
 app.Run();

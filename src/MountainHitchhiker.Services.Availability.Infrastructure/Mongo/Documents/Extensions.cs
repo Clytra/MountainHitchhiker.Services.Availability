@@ -1,3 +1,4 @@
+using MountainHitchhiker.Services.Availability.Application.DTO;
 using MountainHitchhiker.Services.Availability.Core.Entities;
 using MountainHitchhiker.Services.Availability.Core.ValueObjects;
 
@@ -23,6 +24,18 @@ internal static class Extensions
                 TimeStamp = r.DateTime.AsDaysSinceEpoch(),
                 Priority = r.Priority
             })
+        };
+
+    public static ResourceDto AsDto(this ResourceDocument document)
+        => new()
+        {
+            Id = document.Id,
+            Tags = document.Tags,
+            Reservations = document.Reservations?.Select(r => new ReservationDto
+            {
+                DateTime = r.TimeStamp.AsDateTime(),
+                Priority = r.Priority
+            }) ?? Enumerable.Empty<ReservationDto>()
         };
 
     internal static int AsDaysSinceEpoch(this DateTime dateTime)

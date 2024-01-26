@@ -16,7 +16,7 @@ public class AddResourceHandler : ICommandHandler<AddResource>
     
     public async Task HandleAsync(
         AddResource command, 
-        CancellationToken cancellationToken = new CancellationToken())
+        CancellationToken cancellationToken = new())
     {
         if (await _resourceRepository.ExistsAsync(command.ResourceId))
             throw new ResourceAlreadyExistsException(command.ResourceId);

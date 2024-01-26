@@ -9,9 +9,11 @@
     <ItemGroup>
       <PackageReference Include="Convey" Version="1.1.448" />
       <PackageReference Include="Convey.Persistence.MongoDB" Version="1.1.448" />
+      <PackageReference Include="Convey.WebApi" Version="1.1.448" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\MountainHitchhiker.Services.Availability.Application\MountainHitchhiker.Services.Availability.Application.csproj" />
       <ProjectReference Include="..\MountainHitchhiker.Services.Availability.Core\MountainHitchhiker.Services.Availability.Core.csproj" />
     </ItemGroup>
 

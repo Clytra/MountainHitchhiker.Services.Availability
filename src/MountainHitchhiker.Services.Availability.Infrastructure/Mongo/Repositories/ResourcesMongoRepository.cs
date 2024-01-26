@@ -6,11 +6,11 @@ using MountainHitchhiker.Services.Availability.Infrastructure.Mongo.Documents;
 
 namespace MountainHitchhiker.Services.Availability.Infrastructure.Mongo.Repositories;
 
-internal sealed class ResourceMongoRepository : IResourceRepository
+internal sealed class ResourcesMongoRepository : IResourceRepository
 {
     private readonly IMongoRepository<ResourceDocument, Guid> _repository;
     
-    public ResourceMongoRepository(IMongoRepository<ResourceDocument, Guid> repository)
+    public ResourcesMongoRepository(IMongoRepository<ResourceDocument, Guid> repository)
     {
         _repository = repository;
     }

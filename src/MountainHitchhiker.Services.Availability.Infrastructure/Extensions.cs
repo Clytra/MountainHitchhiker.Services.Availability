@@ -1,8 +1,11 @@
 using Convey;
+using Convey.CQRS.Queries;
 using Convey.Persistence.MongoDB;
+using Convey.WebApi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using MountainHitchhiker.Services.Availability.Core.Repositories;
+using MountainHitchhiker.Services.Availability.Infrastructure.Exceptions;
 using MountainHitchhiker.Services.Availability.Infrastructure.Mongo.Documents;
 using MountainHitchhiker.Services.Availability.Infrastructure.Mongo.Repositories;
 
@@ -12,9 +15,12 @@ public static class Extensions
 {
     public static IConveyBuilder AddInfrastructure(this IConveyBuilder builder)
     {
-        builder.Services.AddTransient<IResourceRepository, ResourceMongoRepository>();
+        builder.Services.AddTransient<IResourceRepository, ResourcesMongoRepository>();
         
         builder
+            .AddQueryHandlers()
+            .AddInMemoryQueryDispatcher()
+            .AddErrorHandler<ExceptionToResponseMapper>()
             .AddMongo()
             .AddMongoRepository<ResourceDocument, Guid>("resources");
         
@@ -23,7 +29,9 @@ public static class Extensions
 
     public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app)
     {
-        app.UseConvey();
+        app
+            .UseErrorHandler()
+            .UseConvey();
         
         return app;
     }

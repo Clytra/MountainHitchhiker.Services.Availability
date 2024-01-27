@@ -1,8 +1,7 @@
 using MountainHitchhiker.Services.Availability.Core.Entities;
-using MountainHitchhiker.Services.Availability.Core.Events;
 using MountainHitchhiker.Services.Availability.Core.ValueObjects;
 
-namespace MountainHitchhiker.Services.Availability.Core.Exceptions;
+namespace MountainHitchhiker.Services.Availability.Core.Events;
 
 public class ReservationCanceled : IDomainEvent
 {

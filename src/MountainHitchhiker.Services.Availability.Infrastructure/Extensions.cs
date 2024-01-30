@@ -1,7 +1,11 @@
 using Convey;
+using Convey.CQRS.Commands;
+using Convey.CQRS.Events;
 using Convey.CQRS.Queries;
 using Convey.Docs.Swagger;
 using Convey.MessageBrokers.CQRS;
+using Convey.MessageBrokers.Outbox;
+using Convey.MessageBrokers.Outbox.Mongo;
 using Convey.MessageBrokers.RabbitMQ;
 using Convey.Persistence.MongoDB;
 using Convey.WebApi;
@@ -14,6 +18,7 @@ using MountainHitchhiker.Services.Availability.Application.Events;
 using MountainHitchhiker.Services.Availability.Application.Events.External;
 using MountainHitchhiker.Services.Availability.Application.Services;
 using MountainHitchhiker.Services.Availability.Core.Repositories;
+using MountainHitchhiker.Services.Availability.Infrastructure.Decorators;
 using MountainHitchhiker.Services.Availability.Infrastructure.Exceptions;
 using MountainHitchhiker.Services.Availability.Infrastructure.Mongo.Documents;
 using MountainHitchhiker.Services.Availability.Infrastructure.Mongo.Repositories;
@@ -29,6 +34,8 @@ public static class Extensions
         builder.Services.AddTransient<IMessageBroker, MessageBroker>();
         builder.Services.AddTransient<IEventProcessor, EventProcessor>();
         builder.Services.AddSingleton<IEventMapper, EventMapper>();
+        builder.Services.TryDecorate(typeof(ICommandHandler<>), typeof(OutboxCommandHandlerDecorator<>));
+        builder.Services.TryDecorate(typeof(IEventHandler<>), typeof(OutboxEventHandlerDecorator<>));
 
         builder.Services.Scan(s => s.FromAssemblies(AppDomain.CurrentDomain.GetAssemblies())
             .AddClasses(c => c.AssignableTo(typeof(IDomainEventHandler<>)))
@@ -44,7 +51,8 @@ public static class Extensions
             .AddMongoRepository<ResourceDocument, Guid>("resources")
             .AddRabbitMq()
             .AddSwaggerDocs()
-            .AddWebApiSwaggerDocs();
+            .AddWebApiSwaggerDocs()
+            .AddMessageOutbox(o => o.AddMongo());
         
         return builder;
     }

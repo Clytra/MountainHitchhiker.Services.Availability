@@ -11,17 +11,20 @@ internal sealed class MessageBroker : IMessageBroker
     private readonly IMessageOutbox _outbox;
     private readonly OutboxOptions _outboxOptions;
     private readonly IMessagePropertiesAccessor _messagePropertiesAccessor;
+    private readonly ICorrelationContextAccessor _correlationContextAccessor;
     
     public MessageBroker(
         IBusPublisher busPublisher, 
         IMessageOutbox outbox, 
         OutboxOptions outboxOptions, 
-        IMessagePropertiesAccessor messagePropertiesAccessor)
+        IMessagePropertiesAccessor messagePropertiesAccessor,
+        ICorrelationContextAccessor correlationContextAccessor)
     {
         _busPublisher = busPublisher;
         _outbox = outbox;
         _outboxOptions = outboxOptions;
         _messagePropertiesAccessor = messagePropertiesAccessor;
+        _correlationContextAccessor = correlationContextAccessor;
     }
 
     public async Task PublishAsync(params IEvent[] events)
@@ -33,6 +36,7 @@ internal sealed class MessageBroker : IMessageBroker
 
         var messageProperties = _messagePropertiesAccessor.MessageProperties;
         var originatedMessageId = messageProperties?.MessageId;
+        var correlationId = messageProperties?.CorrelationId;
 
         foreach (var @event in events)
         {
@@ -42,11 +46,11 @@ internal sealed class MessageBroker : IMessageBroker
 
             if (_outbox.Enabled)
             {
-                await _outbox.SendAsync(@event, originatedMessageId, messageId);
+                await _outbox.SendAsync(@event, originatedMessageId, messageId, correlationId);
                 continue;
             }
                     
-            await _busPublisher.PublishAsync(@event, messageId);
+            await _busPublisher.PublishAsync(@event, messageId, correlationId);
         }
     }
 }

@@ -14,6 +14,7 @@ using Convey.WebApi.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using MountainHitchhiker.Services.Availability.Application;
+using MountainHitchhiker.Services.Availability.Application.Commands;
 using MountainHitchhiker.Services.Availability.Application.Events;
 using MountainHitchhiker.Services.Availability.Application.Events.External;
 using MountainHitchhiker.Services.Availability.Application.Services;
@@ -65,7 +66,9 @@ public static class Extensions
             .UsePublicContracts<ContractAttribute>()
             .UseSwaggerDocs()
             .UseRabbitMq()
-            .SubscribeEvent<SignedUp>();
+            .SubscribeEvent<SignedUp>()
+            .SubscribeCommand<AddResource>()
+            .SubscribeCommand<ReserveResource>();
         
         return app;
     }

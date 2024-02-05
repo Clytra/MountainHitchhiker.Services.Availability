@@ -37,6 +37,7 @@ internal sealed class MessageBroker : IMessageBroker
         var messageProperties = _messagePropertiesAccessor.MessageProperties;
         var originatedMessageId = messageProperties?.MessageId;
         var correlationId = messageProperties?.CorrelationId;
+        var correlationContext = _correlationContextAccessor.CorrelationContext;
 
         foreach (var @event in events)
         {
@@ -46,11 +47,14 @@ internal sealed class MessageBroker : IMessageBroker
 
             if (_outbox.Enabled)
             {
-                await _outbox.SendAsync(@event, originatedMessageId, messageId, correlationId);
+                await _outbox.SendAsync(
+                    @event, originatedMessageId, messageId, correlationId, messageContext: correlationContext);
                 continue;
             }
                     
-            await _busPublisher.PublishAsync(@event, messageId, correlationId);
+            await _busPublisher.PublishAsync(
+                @event, originatedMessageId, messageId, 
+                correlationId, messageContext: correlationContext);
         }
     }
 }
